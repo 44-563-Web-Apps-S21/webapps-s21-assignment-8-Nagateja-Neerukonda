@@ -1,4 +1,5 @@
 const http = require('http')    //Pull in a useful node package
+const { table } = require('node:console')
                                 
 const hostname = process.env.hostname || '127.0.0.1'    //get our ip address from the environment
 const port = process.env.port || 3001               //and the port
@@ -11,9 +12,13 @@ const server =
 
       res.write('<html> <head> <title> Served </title> </head>')
       res.write('<body>')
-      res.write('Content \n')
-      res.write('More content \n')
-      res.write('Hello World')    
+      res.write('<table>')
+      res.write('<tr> <th>Location</th><th>Number of Hours</th> <th>Amount in $</th></tr>')
+      res.write('<tr><td>Chikmagalur</td><td>80</td><td>1000 $</td></tr>')
+      res.write('<tr><td>Goa Beach</td><td>60</td><td>500</td></tr>')
+      res.write('<tr><td>Araku Valley</td><td>48</td><td>300</td></tr>')
+      res.write('<tr><td>ooty</td><td>28</td><td>600</td> </tr>')
+      res.write('</table>')    
       res.end('</body></html>')
       //Close the response
     }                           
