@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <title>Fetch Demo</title>
+        <style>
+            #result{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                font-weight: bolder;
+                margin-top: 3%;
+            }
+            #result div{
+                border: 2px solid rgb(45, 11, 199);
+                color: blue;
+                margin: 2px;
+                padding: 15px;
+              
+            }
+            button{
+                padding: 16px;
+                background: rgb(233, 9, 20);
+                color: white;
+                font-weight: bolder;
+                border: none;
+                margin: 2px;
+                margin-left: 40%;
+                margin-top: 3%;
+            }
+            h1{
+                text-align: center;
+                color: red;
+            }
+            #in{
+
+                margin-left: 40%;
+            }
+            input{
+                text-align: center;
+               
+                margin-left: 40%;
+                padding: 10px;
+                margin: 1px;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <h1>
+            Nagateja Neerukonda Computes
+        </h1>
+        <div id="in">  
+            <label for="fname" style="color:green;">Enter number:</label><br>
+            <input type="number" name="num1" id="num1"><br>
+            <input type="number" name="num2" id=num2>
+        </div>
+        <button onclick="remoteCompute()">Remote compute</button>
+
+        <div id="result">
+
+        </div>
+        <script>
+            const remoteCompute=()=>{
+                let value1=document.getElementById("num1").value
+                let value2=document.getElementById("num2").value
+                //let url=`http://127.0.0.1:3001?number1=${value1}&number2=${value2}`
+                fetch(`http://127.0.0.1:3001?value1=${value1}&value2=${value2}`).then(
+                    (resp)=>{
+                        console.log(resp)
+                        return resp.text();
+                    }
+                ).then((data)=>{
+                    console.log(data)
+                    document.getElementById("result").innerHTML=data
+                }).catch(err=>{
+                    document.getElementById("result").innerHTML=err
+                })
+            }
+        </script>
+    </body>
+</html>

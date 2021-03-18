@@ -21,6 +21,7 @@ const server =
        
           console.log("Look for query parameter data: " + search_params.get("data"))
           console.log("Look for query parameter value1: " + search_params.get("value1"))
+          console.log("Look for query parameter value1: " + search_params.get("value2"))
 
           let params1 = search_params.get("value1")
           //let params2=search_params.get("y")
